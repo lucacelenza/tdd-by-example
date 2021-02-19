@@ -19,4 +19,13 @@ public class MoneyTest {
         five.times(3);
         assertEquals(15, five.getAmount());
     }
+
+    @Test
+    void testImmutability() {
+        Dollar five = new Dollar(5);
+        Dollar firstMultiplication = five.times(2);
+        assertEquals(10, firstMultiplication.getAmount());
+        Dollar secondMultiplication = five.times(3);
+        assertEquals(15, secondMultiplication.getAmount());
+    }
 }
