@@ -40,6 +40,11 @@ public class Money implements Expression {
     }
 
     @Override
+    public Expression plus(Expression addend) {
+        return new Sum(this, addend);
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Money)) return false;
