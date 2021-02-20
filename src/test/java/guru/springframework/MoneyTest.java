@@ -23,6 +23,12 @@ public class MoneyTest {
     void testNotEquality() {
         assertNotEquals(Money.dollar(5), Money.dollar(10));
         assertNotEquals(Money.dollar(5), null);
-        assertNotEquals(Money.dollar(5), Money.franc(5));
+        assertNotEquals(Money.dollar(5), Money.euro(5));
+    }
+
+    @Test
+    void testCurrency() {
+        assertEquals("USD", Money.dollar(1).getCurrency());
+        assertEquals("EUR", Money.euro(1).getCurrency());
     }
 }
