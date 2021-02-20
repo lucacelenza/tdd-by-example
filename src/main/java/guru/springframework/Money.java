@@ -2,8 +2,8 @@ package guru.springframework;
 
 import java.util.Objects;
 
-public abstract class Money {
-    protected final int amount;
+public class Money {
+    private final int amount;
     private final String currency;
 
     public Money(int amount, String currency) {
@@ -19,7 +19,9 @@ public abstract class Money {
         return new Euro(amount, "EUR");
     }
 
-    public abstract Money times(int multiplier);
+    public Money times(int multiplier) {
+        return new Money(amount * multiplier, currency);
+    }
 
     public int getAmount() {
         return amount;
@@ -35,7 +37,7 @@ public abstract class Money {
         if (!(o instanceof Money)) return false;
         Money money = (Money) o;
         return amount == money.amount &&
-                getClass().equals(o.getClass());
+                Objects.equals(currency, money.currency);
     }
 
     @Override
