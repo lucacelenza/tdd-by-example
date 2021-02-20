@@ -12,11 +12,11 @@ public class Money {
     }
 
     public static Money dollar(int amount) {
-        return new Dollar(amount, "USD");
+        return new Money(amount, "USD");
     }
 
     public static Money euro(int amount) {
-        return new Euro(amount, "EUR");
+        return new Money(amount, "EUR");
     }
 
     public Money times(int multiplier) {
