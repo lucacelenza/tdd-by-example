@@ -18,7 +18,8 @@ public class Money {
         if (this == o) return true;
         if (!(o instanceof Money)) return false;
         Money money = (Money) o;
-        return amount == money.amount;
+        return amount == money.amount &&
+                getClass().equals(o.getClass());
     }
 
     @Override
