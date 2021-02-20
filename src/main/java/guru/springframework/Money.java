@@ -19,7 +19,7 @@ public class Money implements Expression {
         return new Money(amount, "EUR");
     }
 
-    public Money times(int multiplier) {
+    public Expression times(int multiplier) {
         return new Money(amount * multiplier, currency);
     }
 
@@ -56,9 +56,5 @@ public class Money implements Expression {
     @Override
     public int hashCode() {
         return Objects.hash(amount);
-    }
-
-    public Expression plus(Money addend) {
-        return new Sum(this, addend);
     }
 }

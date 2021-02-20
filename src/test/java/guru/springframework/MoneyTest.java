@@ -2,8 +2,7 @@ package guru.springframework;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class MoneyTest {
 
@@ -81,5 +80,27 @@ public class MoneyTest {
         bank.addRate("EUR", "USD", 2);
         Money result = bank.reduce(fiveBucks.plus(tenEuros), "USD");
         assertEquals(Money.dollar(10), result);
+    }
+
+    @Test
+    void testSumPlusMoney() {
+        Expression fiveBucks = Money.dollar(5);
+        Expression tenEuros = Money.euro(10);
+        Bank bank = new Bank();
+        bank.addRate("EUR", "USD", 2);
+        Expression sum = new Sum(fiveBucks, tenEuros).plus(fiveBucks);
+        Money result = bank.reduce(sum, "USD");
+        assertEquals(Money.dollar(15), result);
+    }
+
+    @Test
+    void testSumTimes() {
+        Expression fiveBucks = Money.dollar(5);
+        Expression tenEuros = Money.euro(10);
+        Bank bank = new Bank();
+        bank.addRate("EUR", "USD", 2);
+        Expression sum = new Sum(fiveBucks, tenEuros).times(2);
+        Money result = bank.reduce(sum, "USD");
+        assertEquals(Money.dollar(20), result);
     }
 }
