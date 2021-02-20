@@ -2,7 +2,7 @@ package guru.springframework;
 
 import java.util.Objects;
 
-public class Money {
+public class Money implements Expression {
     private final int amount;
     private final String currency;
 
@@ -43,5 +43,9 @@ public class Money {
     @Override
     public int hashCode() {
         return Objects.hash(amount);
+    }
+
+    public Expression plus(Money addend) {
+        return new Money(amount + addend.amount, currency);
     }
 }
