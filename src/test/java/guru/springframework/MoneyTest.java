@@ -16,6 +16,7 @@ public class MoneyTest {
     @Test
     void testEquality() {
         assertEquals(Money.dollar(5), Money.dollar(5));
+        assertEquals(Money.dollar(5).hashCode(), Money.dollar(5).hashCode());
     }
 
     @Test
